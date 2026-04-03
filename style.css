@@ -130,3 +130,35 @@ h1, h2, h3 {
     color: var(--bg-dark);
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
 }
+/* --- FIX: CENTERING & SPACING --- */
+.hero-core {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical center */
+    align-items: center;     /* Horizontal center */
+    text-align: center;
+    padding: 0;             /* Removed heavy top padding */
+    position: relative;
+    z-index: 10;
+}
+
+/* --- FLASHY TEXT EFFECT --- */
+.glow-text {
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+                 0 0 40px rgba(255, 255, 255, 0.2);
+    animation: pulse-glow 3s infinite alternate;
+}
+
+@keyframes pulse-glow {
+    from { opacity: 0.8; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+    to { opacity: 1; text-shadow: 0 0 30px rgba(255,255,255,0.6); }
+}
+
+/* Ensure the container doesn't add extra top margin */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+ }
