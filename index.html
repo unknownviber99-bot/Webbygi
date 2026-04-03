@@ -4,302 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEBULUX // Digital Core</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/main.css">
-<link rel="stylesheet" href="styles/glass.css">
-<link rel="stylesheet" href="styles/animations.css">
-
-
-
-
-
-
-
-
-
-
- 
-    <style>
-        :root {
-            --bg-deep: #0a0a0a;
-            --bg-gradient: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            --accent: #ffffff;
-            --text-dim: #a0a0a0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
-
-        body {
-            background: var(--bg-deep);
-            background: var(--bg-gradient);
-            color: var(--accent);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            height: 200vh; /* For scroll testing */
-        }
-
-        /* --- BACKGROUND & OVERLAYS --- */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.05;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        /* --- CUSTOM CURSOR --- */
-        .cursor-dot, .cursor-outline {
-            position: fixed;
-            top: 0; left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
-        }
-        .cursor-dot { width: 6px; height: 6px; background: white; }
-        .cursor-outline {
-            width: 30px; height: 30px;
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: transform 0.15s ease-out;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative;
-            z-index: 10;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            line-height: 0.9;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero p {
-            color: var(--text-dim);
-            max-width: 600px;
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* --- GLASS BUTTON --- */
-        .cta-btn {
-            padding: 1.2rem 2.5rem;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            font-size: 0.8rem;
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            opacity: 0;
-        }
-
-        .cta-btn:hover {
-            background: white;
-            color: black;
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
-        }
-
-        /* --- CONTENT CARDS --- */
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 5rem 10vw;
-            z-index: 10;
-            position: relative;
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            backdrop-filter: blur(15px);
-            border-radius: 4px;
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease;
-            opacity: 0;
-        }
-
-        /* --- ANIMATION CLASSES --- */
-        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: all 1s ease-out; }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="glass.css">
 </head>
 <body>
- <script src="scripts/particles.js" defer></script>
-<script src="scripts/interaction.js" defer></script>
-<script src="scripts/observer.js" defer></script>
 
-    <div class="noise"></div>
+    <div class="noise-overlay"></div>
+    
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+
     <canvas id="particle-canvas"></canvas>
 
-    <section class="hero">
-        <h1 id="hero-title">ENGINEERED<br>IMPACT.</h1>
-        <p id="hero-sub">Crafting high-performance digital architectures that flex between aesthetic luxury and technical precision.</p>
-        <a href="#" class="cta-btn magnetic" id="hero-cta">Enter the Core</a>
-    </section>
+    <main class="container">
+        <section class="hero section-padding">
+            <h1 class="hero-title reveal-on-scroll">ENGINEERED<br>IMPACT.</h1>
+            <p class="sub-headline reveal-on-scroll">High-performance digital architecture with a cinematic edge.</p>
+            <div class="reveal-on-scroll" style="margin-top: 3rem;">
+                <a href="#" class="btn-primary magnetic">Enter the Core</a>
+            </div>
+        </section>
+        
+        <section class="glass-grid reveal-on-scroll">
+            </section>
+    </main>
 
-    <section class="section-grid">
-        <div class="card tilt-element">
-            <h3>Scalable Edge</h3>
-            <p style="color: var(--text-dim); margin-top: 1rem;">Deployments optimized for global performance and ultra-low latency.</p>
-        </div>
-        <div class="card tilt-element">
-            <h3>Cinematic UX</h3>
-            <p style="color: var(--text-dim); margin-top: 1rem;">Interaction models designed to captivate and convert high-ticket clients.</p>
-        </div>
-    </section>
-
-    <script>
-        // --- PARTICLE SYSTEM ---
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: -100, y: -100 };
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = Math.random() * 0.2 - 0.1;
-                this.speedY = Math.random() * 0.2 - 0.1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                
-                // Mouse interaction
-                let dx = mouse.x - this.x;
-                let dy = mouse.y - this.y;
-                let distance = Math.sqrt(dx*dx + dy*dy);
-                if(distance < 100) {
-                    this.x -= dx/50;
-                    this.y -= dy/50;
-                }
-
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(255,255,255,0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for(let i=0; i<100; i++) particles.push(new Particle());
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
-        // --- CUSTOM CURSOR ---
-        const dot = document.querySelector('.cursor-dot');
-        const outline = document.querySelector('.cursor-outline');
-
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-            dot.style.top = e.clientY + 'px';
-            dot.style.left = e.clientX + 'px';
-            
-            // Lagging outline
-            outline.animate({
-                top: e.clientY + 'px',
-                left: e.clientX + 'px'
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        // --- INTERSECTION OBSERVER (REVEAL) ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) entry.target.classList.add('reveal');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('#hero-title, #hero-sub, #hero-cta, .card').forEach(el => observer.observe(el));
-
-        // --- 3D TILT EFFECT ---
-        document.querySelectorAll('.tilt-element').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                let rect = card.getBoundingClientRect();
-                let x = e.clientX - rect.left;
-                let y = e.clientY - rect.top;
-                let centerX = rect.width / 2;
-                let centerY = rect.height / 2;
-                let rotateX = (y - centerY) / 10;
-                let rotateY = (centerX - x) / 10;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-            });
-        });
-
-        // --- MAGNETIC BUTTONS ---
-        document.querySelectorAll('.magnetic').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                let rect = btn.getBoundingClientRect();
-                let x = e.clientX - rect.left - rect.width/2;
-                let y = e.clientY - rect.top - rect.height/2;
-                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                outline.style.width = '60px';
-                outline.style.height = '60px';
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = `translate(0, 0)`;
-                outline.style.width = '30px';
-                outline.style.height = '30px';
-            });
-        });
-    </script>
+    <script src="particles.js" defer></script>
+    <script src="interaction.js" defer></script>
 </body>
- </html>
+</html>
