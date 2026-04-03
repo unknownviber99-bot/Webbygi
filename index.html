@@ -1,229 +1,56 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium UI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --bg:#0b0b0c;
-  --glass:rgba(255,255,255,0.04);
-  --border:rgba(255,255,255,0.12);
-  --text:#fff;
-  --muted:#9aa0a6;
-}
-
-/* BASE */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
-
-body{
-  background:linear-gradient(135deg,#0d0d0f,#000);
-  color:var(--text);
-}
-
-/* NAV */
-.nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 60px;
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-  z-index:10;
-}
-
-.nav .actions{
-  display:flex;
-  gap:10px;
-}
-
-/* BUTTON */
-.btn{
-  padding:10px 20px;
-  border-radius:30px;
-  border:1px solid var(--border);
-  background:var(--glass);
-  transition:.3s;
-}
-
-.btn:hover{
-  background:rgba(255,255,255,0.08);
-  transform:translateY(-2px);
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 10%;
-}
-
-.hero-left{
-  max-width:600px;
-}
-
-.hero h1{
-  font-size:3.2rem;
-  line-height:1.1;
-}
-
-.hero p{
-  margin-top:20px;
-  color:var(--muted);
-}
-
-.hero-actions{
-  margin-top:30px;
-  display:flex;
-  gap:15px;
-}
-
-/* SYSTEM PANEL */
-.system{
-  width:300px;
-  padding:20px;
-  border-radius:20px;
-  background:var(--glass);
-  border:1px solid var(--border);
-  backdrop-filter:blur(15px);
-}
-
-.system h4{
-  margin-bottom:15px;
-  font-size:14px;
-  color:var(--muted);
-}
-
-.log{
-  font-size:13px;
-  margin-bottom:10px;
-  opacity:0.8;
-}
-
-/* SECTION */
-.section{
-  padding:100px 10%;
-}
-
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
-/* CARD */
-.card{
-  padding:30px;
-  border-radius:18px;
-  background:var(--glass);
-  border:1px solid var(--border);
-  transition:.3s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border:1px solid rgba(255,255,255,0.25);
-}
-
-/* PROJECT */
-.project{
-  height:200px;
-  display:flex;
-  align-items:end;
-  font-size:18px;
-}
-
-/* CTA */
-.cta{
-  text-align:center;
-  padding:120px 20px;
-  border-top:1px solid var(--border);
-}
-
-.cta h2{
-  font-size:2.2rem;
-}
-
-.cta p{
-  margin:15px 0;
-  color:var(--muted);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webuild | Engineering Prestige</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <div class="noise"></div>
 
-<!-- NAV -->
-<div class="nav">
-  <div>Brand</div>
-  <div class="actions">
-    <button class="btn">Login</button>
-    <button class="btn">Dashboard</button>
-  </div>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-
-  <div class="hero-left">
-    <h1>High-End Websites That Convert Into Clients</h1>
-    <p>
-      I design and build premium digital experiences focused on authority, clarity, and conversion.
-    </p>
-
-    <div class="hero-actions">
-      <button class="btn">Start Project</button>
-      <button class="btn">View Work</button>
+    <div class="cursor">
+        <div class="cursor-dot"></div>
+        <div class="cursor-ring"></div>
     </div>
-  </div>
 
-  <div class="system">
-    <h4>System Activity</h4>
-    <div class="log">✔ Client Project Started</div>
-    <div class="log">✔ UI System Built</div>
-    <div class="log">✔ Deployment Complete</div>
-    <div class="log">✔ Optimization Running</div>
-  </div>
+    <canvas id="particleCanvas"></canvas>
 
-</section>
+    <nav>
+        <div class="logo">WEBUILD</div>
+        <div class="nav-links">
+            <a href="#" class="hover-target">Approach</a>
+            <a href="#" class="hover-target">Portfolio</a>
+            <button class="btn-nav hover-target">Inquiry</button>
+        </div>
+    </nav>
 
-<!-- SERVICES -->
-<section class="section">
-  <div class="grid">
-    <div class="card">UI Engineering</div>
-    <div class="card">Conversion Systems</div>
-    <div class="card">Brand Positioning</div>
-  </div>
-</section>
+    <main>
+        <section class="hero">
+            <h1 class="reveal-text">ENGINEERING <br> <span>PRESTIGE.</span></h1>
+            <p class="subtext">A digital sanctuary for visionaries. We craft ultra-high-end interfaces that command authority.</p>
+            <div class="magnetic-wrap">
+                <button class="btn-primary hover-target">Secure Collaboration</button>
+            </div>
+        </section>
 
-<!-- PROJECTS -->
-<section class="section">
-  <div class="grid">
-    <div class="card project">Project One</div>
-    <div class="card project">Project Two</div>
-    <div class="card project">Project Three</div>
-  </div>
-</section>
+        <section class="grid">
+            <div class="card tilt-element">
+                <h3>Vision</h3>
+                <p>Defining the digital future through minimal, high-impact aesthetics.</p>
+            </div>
+            <div class="card tilt-element">
+                <h3>Precision</h3>
+                <p>Every pixel and interaction engineered for mathematical perfection.</p>
+            </div>
+            <div class="card tilt-element">
+                <h3>Legacy</h3>
+                <p>Building timeless digital assets that retain value across eras.</p>
+            </div>
+        </section>
+    </main>
 
-<!-- CTA -->
-<section class="cta">
-  <h2>Enter The System</h2>
-  <p>Access your dashboard or start your project</p>
-  <button class="btn">Go to Dashboard</button>
-</section>
-
+    <script src="script.js"></script>
 </body>
-     </html>
+</html>
