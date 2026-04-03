@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Personal Brand</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   ROOT & BASE
+========================= */
+:root {
+  --bg: linear-gradient(135deg, #0f0f10, #000000);
+  --glass: rgba(255,255,255,0.06);
+  --border: rgba(255,255,255,0.15);
+  --text: #ffffff;
+  --muted: #9ca3af;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  cursor:none;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x:hidden;
+}
+
+/* =========================
+   NOISE OVERLAY
+========================= */
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity:0.05;
+  pointer-events:none;
+}
+
+/* =========================
+   CANVAS BACKGROUND
+========================= */
+canvas {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* =========================
+   CUSTOM CURSOR
+========================= */
+.cursor {
+  position:fixed;
+  width:20px;
+  height:20px;
+  border:2px solid white;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%, -50%);
+  transition: transform .15s ease-out, width .2s, height .2s;
+}
+
+.cursor-dot {
+  position:fixed;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%, -50%);
+}
+
+.cursor.active {
+  width:50px;
+  height:50px;
+  background:rgba(255,255,255,0.1);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1 {
+  font-size:3rem;
+  font-weight:700;
+  letter-spacing:-1px;
+}
+
+.hero p {
+  margin-top:20px;
+  color:var(--muted);
+  max-width:600px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  margin-top:30px;
+  padding:14px 28px;
+  border-radius:30px;
+  border:1px solid var(--border);
+  background:var(--glass);
+  backdrop-filter:blur(10px);
+  position:relative;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.btn:hover {
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(255,255,255,0.2);
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.card {
+  width:300px;
+  padding:30px;
+  border-radius:20px;
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border);
+  transition:transform 0.2s;
+}
+
+/* =========================
+   SECTION
+========================= */
+.section {
+  padding:100px 20px;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+.fade {
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+
+.fade.show {
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="cursor"></div>
+<div class="cursor-dot"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Engineering Digital Authority</h1>
+  <p>We design presence that attracts premium clients with precision, clarity, and dominance.</p>
+  <button class="btn">Work With Me</button>
+</section>
+
+<!-- CARDS -->
+<section class="section">
+  <div class="card fade">Strategy</div>
+  <div class="card fade">Brand Identity</div>
+  <div class="card fade">Execution</div>
+</section>
+
+<script>
+/* =========================
+   PARTICLE BACKGROUND
+========================= */
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    vx:(Math.random()-0.5)*0.5,
+    vy:(Math.random()-0.5)*0.5
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(p=>{
+    p.x += p.vx;
+    p.y += p.vy;
+
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,2,0,Math.PI*2);
+    ctx.fillStyle="rgba(255,255,255,0.3)";
+    ctx.fill();
+
+    particles.forEach(p2=>{
+      let dist = Math.hypot(p.x-p2.x,p.y-p2.y);
+      if(dist<100){
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(p2.x,p2.y);
+        ctx.strokeStyle="rgba(255,255,255,0.05)";
+        ctx.stroke();
+      }
+    });
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+/* =========================
+   CURSOR
+========================= */
+const cursor = document.querySelector('.cursor');
+const dot = document.querySelector('.cursor-dot');
+
+document.addEventListener('mousemove', e=>{
+  cursor.style.left = e.clientX+'px';
+  cursor.style.top = e.clientY+'px';
+  dot.style.left = e.clientX+'px';
+  dot.style.top = e.clientY+'px';
+});
+
+document.querySelectorAll('button, .card').forEach(el=>{
+  el.addEventListener('mouseenter', ()=> cursor.classList.add('active'));
+  el.addEventListener('mouseleave', ()=> cursor.classList.remove('active'));
+});
+
+/* =========================
+   3D TILT
+========================= */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    let rect = card.getBoundingClientRect();
+    let x = e.clientX - rect.left;
+    let y = e.clientY - rect.top;
+
+    let rotateX = -(y - rect.height/2)/10;
+    let rotateY = (x - rect.width/2)/10;
+
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener('mouseleave', ()=>{
+    card.style.transform = "rotateX(0) rotateY(0)";
+  });
+});
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+});
+
+document.querySelectorAll('.fade').forEach(el=>{
+  observer.observe(el);
+});
+
+/* =========================
+   RESIZE
+========================= */
+window.addEventListener('resize', ()=>{
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+});
+</script>
+
+</body>
+  </html>
