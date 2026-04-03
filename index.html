@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium System</title>
+<title>System Builder</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -13,61 +13,20 @@
   --glass: rgba(255,255,255,0.05);
   --border: rgba(255,255,255,0.15);
   --text:#fff;
-  --muted:#9aa0a6;
+  --muted:#aaa;
 }
 
-/* BASE */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
   font-family:'Inter',sans-serif;
-  cursor:none;
 }
 
 body{
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
-}
-
-/* NOISE */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity:0.05;
-  pointer-events:none;
-}
-
-/* CANVAS */
-canvas{
-  position:fixed;
-  inset:0;
-  z-index:-1;
-}
-
-/* CURSOR */
-.cursor{
-  position:fixed;
-  width:20px;
-  height:20px;
-  border:2px solid white;
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:.15s;
-}
-
-.cursor-dot{
-  position:fixed;
-  width:4px;
-  height:4px;
-  background:white;
-  border-radius:50%;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
 }
 
 /* NAV */
@@ -78,6 +37,7 @@ canvas{
   display:flex;
   justify-content:space-between;
   padding:20px 40px;
+  backdrop-filter:blur(10px);
   z-index:10;
 }
 
@@ -92,32 +52,14 @@ canvas{
   border-radius:25px;
   border:1px solid var(--border);
   background:var(--glass);
-  backdrop-filter:blur(10px);
-  position:relative;
-  overflow:hidden;
-}
-
-.btn::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
-  transition:.6s;
-}
-
-.btn:hover::before{
-  left:100%;
 }
 
 /* HERO */
 .hero{
   height:100vh;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   padding:0 8%;
 }
 
@@ -135,53 +77,26 @@ canvas{
   color:var(--muted);
 }
 
-.hero-actions{
-  margin-top:30px;
-  display:flex;
-  gap:15px;
-}
-
 /* SYSTEM PANEL */
-.system-panel{
-  width:320px;
+.system{
+  width:300px;
+  border-radius:20px;
+  padding:20px;
   background:var(--glass);
   border:1px solid var(--border);
   backdrop-filter:blur(15px);
-  border-radius:20px;
-  padding:20px;
-}
-
-.system-panel h3{
-  margin-bottom:15px;
-  font-size:14px;
-  color:var(--muted);
 }
 
 .log{
   font-size:13px;
   margin-bottom:10px;
-  opacity:0.8;
 }
 
-/* TRUST BAR */
-.trust{
-  display:flex;
-  gap:40px;
-  padding:40px 8%;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-
-.trust div{
-  opacity:0.7;
-}
-
-/* SECTION */
+/* GRID */
 .section{
   padding:80px 8%;
 }
 
-/* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -194,21 +109,24 @@ canvas{
   background:var(--glass);
   border:1px solid var(--border);
   backdrop-filter:blur(15px);
-  transition:.3s;
 }
 
-.card:hover{
-  transform:translateY(-5px);
+/* PROJECTS */
+.project{
+  height:200px;
+  display:flex;
+  align-items:end;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  padding:100px 20px;
 }
 </style>
 </head>
 
 <body>
-
-<canvas id="bg"></canvas>
-
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
 
 <!-- NAV -->
 <div class="nav">
@@ -223,90 +141,50 @@ canvas{
 <section class="hero">
 
   <div class="hero-left">
-    <h1>Built to Attract<br>Premium Clients</h1>
+    <h1>Digital Systems That Convert Attention Into Clients</h1>
     <p>
-      I design and engineer high-conversion digital systems — combining strategy, design, and execution into one controlled experience.
+      I build high-end websites and systems designed for authority, positioning, and revenue.
     </p>
 
-    <div class="hero-actions">
+    <div style="margin-top:30px;">
       <button class="btn">Start Project</button>
-      <button class="btn">View Work</button>
     </div>
   </div>
 
-  <!-- SYSTEM PANEL -->
-  <div class="system-panel">
-    <h3>System Activity</h3>
-    <div class="log">✔ Client Project Initialized</div>
-    <div class="log">✔ New Lead Captured</div>
-    <div class="log">✔ UI System Deployed</div>
-    <div class="log">✔ Performance Optimized</div>
+  <div class="system">
+    <h4 style="margin-bottom:15px;">System Activity</h4>
+    <div class="log">✔ Client Onboarded</div>
+    <div class="log">✔ Website Deployed</div>
+    <div class="log">✔ Payment Received</div>
+    <div class="log">✔ Optimization Running</div>
   </div>
 
 </section>
 
-<!-- TRUST -->
-<section class="trust">
-  <div>Trusted by Founders</div>
-  <div>Premium Clients</div>
-  <div>High Conversion Systems</div>
-</section>
-
-<!-- SERVICES -->
+<!-- VALUE -->
 <section class="section">
   <div class="grid">
-    <div class="card">Brand Systems</div>
     <div class="card">UI Engineering</div>
-    <div class="card">Conversion Strategy</div>
+    <div class="card">Conversion Systems</div>
+    <div class="card">Brand Positioning</div>
   </div>
 </section>
 
-<script>
-/* PARTICLES */
-const canvas=document.getElementById('bg');
-const ctx=canvas.getContext('2d');
+<!-- PROJECTS -->
+<section class="section">
+  <div class="grid">
+    <div class="card project">Project 1</div>
+    <div class="card project">Project 2</div>
+    <div class="card project">Project 3</div>
+  </div>
+</section>
 
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-
-let particles=[];
-for(let i=0;i<70;i++){
- particles.push({
-  x:Math.random()*canvas.width,
-  y:Math.random()*canvas.height,
-  vx:(Math.random()-0.5)*0.4,
-  vy:(Math.random()-0.5)*0.4
- });
-}
-
-function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
-
- particles.forEach(p=>{
-  p.x+=p.vx;
-  p.y+=p.vy;
-
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,2,0,Math.PI*2);
-  ctx.fillStyle="rgba(255,255,255,0.3)";
-  ctx.fill();
- });
-
- requestAnimationFrame(animate);
-}
-animate();
-
-/* CURSOR */
-const cursor=document.querySelector('.cursor');
-const dot=document.querySelector('.cursor-dot');
-
-document.addEventListener('mousemove',e=>{
- cursor.style.left=e.clientX+'px';
- cursor.style.top=e.clientY+'px';
- dot.style.left=e.clientX+'px';
- dot.style.top=e.clientY+'px';
-});
-</script>
+<!-- CTA -->
+<section class="cta">
+  <h2>Enter The System</h2>
+  <p style="margin:15px 0;color:#aaa;">Access your dashboard or start your project</p>
+  <button class="btn">Go to Dashboard</button>
+</section>
 
 </body>
-   </html>
+</html>
