@@ -109,3 +109,61 @@ document.querySelectorAll('.tilt-element').forEach(card => {
         card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
     });
 });
+// --- ALL PREVIOUS PARTICLE & CURSOR CODE REMAINS THE SAME ---
+
+// 1. Entrance & Scroll Reveal Logic
+const revealOnScroll = () => {
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    // Targets to animate
+    const targets = document.querySelectorAll('.reveal-text, .subtext, .magnetic-wrap, .card');
+    targets.forEach(t => observer.observe(t));
+};
+
+// 2. Magnetic Button Effect
+const setupMagneticButton = () => {
+    const mWrap = document.querySelector('.magnetic-wrap');
+    const mBtn = document.querySelector('.btn-primary');
+
+    mWrap.addEventListener('mousemove', (e) => {
+        const rect = mWrap.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        // The button moves 40% of the mouse distance for a "magnetic" feel
+        mBtn.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+    });
+
+    mWrap.addEventListener('mouseleave', () => {
+        mBtn.style.transform = `translate(0px, 0px)`;
+    });
+};
+
+// 3. Click Ripple Effect
+window.addEventListener('mousedown', () => {
+    const ring = document.querySelector('.cursor-ring');
+    ring.style.transform = 'translate(-50%, -50%) scale(0.5)';
+    ring.style.borderColor = 'rgba(255,255,255,0.8)';
+});
+
+window.addEventListener('mouseup', () => {
+    const ring = document.querySelector('.cursor-ring');
+    ring.style.transform = 'translate(-50%, -50%) scale(1)';
+    ring.style.borderColor = 'rgba(255,255,255,0.3)';
+});
+
+// Initialize everything
+window.onload = () => {
+    revealOnScroll();
+    setupMagneticButton();
+};
