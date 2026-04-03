@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>System Builder</title>
+<title>Premium UI</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg: linear-gradient(135deg,#0d0d0f,#000);
-  --glass: rgba(255,255,255,0.05);
-  --border: rgba(255,255,255,0.15);
+  --bg:#0b0b0c;
+  --glass:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.12);
   --text:#fff;
-  --muted:#aaa;
+  --muted:#9aa0a6;
 }
 
+/* BASE */
 *{
   margin:0;
   padding:0;
@@ -24,9 +25,8 @@
 }
 
 body{
-  background:var(--bg);
+  background:linear-gradient(135deg,#0d0d0f,#000);
   color:var(--text);
-  overflow-x:hidden;
 }
 
 /* NAV */
@@ -36,8 +36,9 @@ body{
   width:100%;
   display:flex;
   justify-content:space-between;
-  padding:20px 40px;
+  padding:20px 60px;
   backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
   z-index:10;
 }
 
@@ -49,18 +50,24 @@ body{
 /* BUTTON */
 .btn{
   padding:10px 20px;
-  border-radius:25px;
+  border-radius:30px;
   border:1px solid var(--border);
   background:var(--glass);
+  transition:.3s;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,0.08);
+  transform:translateY(-2px);
 }
 
 /* HERO */
 .hero{
   height:100vh;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:0 8%;
+  justify-content:space-between;
+  padding:0 10%;
 }
 
 .hero-left{
@@ -68,7 +75,7 @@ body{
 }
 
 .hero h1{
-  font-size:3.5rem;
+  font-size:3.2rem;
   line-height:1.1;
 }
 
@@ -77,51 +84,82 @@ body{
   color:var(--muted);
 }
 
+.hero-actions{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+}
+
 /* SYSTEM PANEL */
 .system{
   width:300px;
-  border-radius:20px;
   padding:20px;
+  border-radius:20px;
   background:var(--glass);
   border:1px solid var(--border);
   backdrop-filter:blur(15px);
+}
+
+.system h4{
+  margin-bottom:15px;
+  font-size:14px;
+  color:var(--muted);
 }
 
 .log{
   font-size:13px;
   margin-bottom:10px;
+  opacity:0.8;
+}
+
+/* SECTION */
+.section{
+  padding:100px 10%;
 }
 
 /* GRID */
-.section{
-  padding:80px 8%;
-}
-
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:25px;
 }
 
+/* CARD */
 .card{
-  padding:25px;
-  border-radius:15px;
+  padding:30px;
+  border-radius:18px;
   background:var(--glass);
   border:1px solid var(--border);
-  backdrop-filter:blur(15px);
+  transition:.3s;
 }
 
-/* PROJECTS */
+.card:hover{
+  transform:translateY(-6px);
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+/* PROJECT */
 .project{
   height:200px;
   display:flex;
   align-items:end;
+  font-size:18px;
 }
 
 /* CTA */
 .cta{
   text-align:center;
-  padding:100px 20px;
+  padding:120px 20px;
+  border-top:1px solid var(--border);
+}
+
+.cta h2{
+  font-size:2.2rem;
+}
+
+.cta p{
+  margin:15px 0;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -141,27 +179,28 @@ body{
 <section class="hero">
 
   <div class="hero-left">
-    <h1>Digital Systems That Convert Attention Into Clients</h1>
+    <h1>High-End Websites That Convert Into Clients</h1>
     <p>
-      I build high-end websites and systems designed for authority, positioning, and revenue.
+      I design and build premium digital experiences focused on authority, clarity, and conversion.
     </p>
 
-    <div style="margin-top:30px;">
+    <div class="hero-actions">
       <button class="btn">Start Project</button>
+      <button class="btn">View Work</button>
     </div>
   </div>
 
   <div class="system">
-    <h4 style="margin-bottom:15px;">System Activity</h4>
-    <div class="log">✔ Client Onboarded</div>
-    <div class="log">✔ Website Deployed</div>
-    <div class="log">✔ Payment Received</div>
+    <h4>System Activity</h4>
+    <div class="log">✔ Client Project Started</div>
+    <div class="log">✔ UI System Built</div>
+    <div class="log">✔ Deployment Complete</div>
     <div class="log">✔ Optimization Running</div>
   </div>
 
 </section>
 
-<!-- VALUE -->
+<!-- SERVICES -->
 <section class="section">
   <div class="grid">
     <div class="card">UI Engineering</div>
@@ -173,18 +212,18 @@ body{
 <!-- PROJECTS -->
 <section class="section">
   <div class="grid">
-    <div class="card project">Project 1</div>
-    <div class="card project">Project 2</div>
-    <div class="card project">Project 3</div>
+    <div class="card project">Project One</div>
+    <div class="card project">Project Two</div>
+    <div class="card project">Project Three</div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="cta">
   <h2>Enter The System</h2>
-  <p style="margin:15px 0;color:#aaa;">Access your dashboard or start your project</p>
+  <p>Access your dashboard or start your project</p>
   <button class="btn">Go to Dashboard</button>
 </section>
 
 </body>
-</html>
+     </html>
